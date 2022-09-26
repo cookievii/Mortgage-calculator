@@ -1,0 +1,35 @@
+version: '3.7'
+
+x-app_environment: &app_environment
+  environment:
+    - DEBUG=True
+    - POSTGRES_PASSWORD=postgres
+
+services:
+  db:
+    image: postgres:12.3-alpine
+    restart: unless-stopped
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    <<: *app_environment
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend/:/app/:cached
+      - static:/app/static/:delegated
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    <<: *app_environment
+
+volumes:
+  static:
+  postgresdata:
+
