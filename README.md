@@ -56,7 +56,7 @@
 ### Локальный запуск приложения
 ```shell
 # - Cкачайте:
-git clone git@github.com:cookievii/Foodgram.git
+git@github.com:cookievii/Mortgage-calculator.git
 
 # - Запустите приложения в контейнерах:
 docker-compose up -d --build
