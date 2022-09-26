@@ -1,0 +1,4 @@
+/backend/static/
+/backend/media/
+venv/
+.idea/
