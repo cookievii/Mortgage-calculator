@@ -56,7 +56,7 @@
 ### Локальный запуск приложения
 ```shell
 # - Cкачайте:
-git@github.com:cookievii/Mortgage-calculator.git
+git@github.com:cookievii/test_task_mortgage_calculator.git
 
 # - Запустите приложения в контейнерах:
 docker-compose up -d --build
